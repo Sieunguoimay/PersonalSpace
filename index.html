@@ -8,16 +8,109 @@
     <title>Document</title>
     <link rel="stylesheet" href="bootstrap-4.3.1-dist\css\bootstrap.min.css">
     <script src="bootstrap-4.3.1-dist\js\bootstrap.min.js"></script>
+    <script src="jquery\jquery-3.6.1.min.js"></script>
+    <style>
+        .bg_color_gray {
+            /* background-color: gray; */
+        }
+
+        .bg_color_aqua {
+            /* background-color: aqua; */
+        }
+
+        .bg_color_yellow {
+            /* background-color: yellow; */
+        }
+
+        .text_align_center {
+            text-align: center;
+        }
+
+        .tab_button {
+            font: caption;
+            /* padding-top: 7px;
+            padding-bottom: 7px; */
+            font-weight: bold;
+            font-size: large;
+        }
+
+        .tab_button_active {
+            font-weight: bolder;
+            text-decoration: underline;
+        }
+
+        .tab_button_hover {
+            /* background-color: gray; */
+            color: gray;
+        }
+    </style>
 </head>
 
 <body>
     <div class="container">
         <div class="row">
-            <div class="col">
-                <h1 style="align-content: center;">Personal Space</h1>
+            <div class="col-lg-1"></div>
+            <div class="col-lg-10 bg_color_gray">
+                <h1 style="text-align: center;margin-top:50px;margin-bottom: 20px;">Personal Space</h1>
+                <div class="bg_color_yellow mb-3 text_align_center" style="font-style:italic">There's no one here but me..</div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-1"></div>
+                        <div class="col-md-10">
+                            <div class="container mb-5">
+                                <div class="row text_align_center" id="tab_container">
+                                    <div class="col bg_color_aqua tab_button">Main</div>
+                                    <div class="col bg_color_aqua tab_button">Paintings</div>
+                                    <div class="col bg_color_aqua tab_button">Writings</div>
+                                    <div class="col bg_color_aqua tab_button">Info</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-1"></div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row mb-3">
+                        <div class="col" id="tab_content">
+
+                        </div>
+                    </div>
+                    <div class="row mb-3" style="border-top: 1px solid gray;">
+                        <div class="col text_align_center">
+                            Ends of this page
+                        </div>
+                    </div>
+                </div>
             </div>
+            <div class="col-lg-1"></div>
         </div>
     </div>
 </body>
+<script>
+    $(".tab_button").hover(function () {
+        $(this).addClass("tab_button_hover");
+    }, function () {
+        $(this).removeClass("tab_button_hover");
+    });
+    var activeTab = 0;
+    var contentUrls = ["/content/main.html", "/content/paintings.html", "/content/writings.html", "/content/info.html"];
+
+    var tabs = $("#tab_container").children();
+    tabs.eq(activeTab).addClass("tab_button_active");
+    tabs.click(function () {
+        tabs.eq(activeTab).removeClass("tab_button_active");
+        activeTab = tabs.index(this);
+        tabs.eq(activeTab).addClass("tab_button_active");
+        LoadTabContent();
+    });
+
+    function LoadTabContent() {
+        $.get(contentUrls[activeTab], function (data) {
+            $("#tab_content").html(data);
+        });
+    }
+    LoadTabContent();
+</script>
 
 </html>

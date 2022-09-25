@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col mb-3" style="text-align:center;">
+            Painting is hard!
+        </div>
+    </div>
+    <div class="row">
+        <div class="col mb-2" id="img_container"></div>
+    </div>
+</div>
+<script>
+    var imgUrls = [
+    "/content/images/blossom.png",
+    "/content/images/boy.jpg",
+    "/content/images/buffalo.jpg",
+    "/content/images/man_riding.png",
+    "/content/images/secondary_school_final.jpg",
+    "/content/images/random.png",
+    ];
+    var html = "";
+    imgUrls.forEach(function (img) {
+        html += "<img width='100%' src='" + img + "' style='margin-bottom:50px' alt=''>"
+    })
+    $(img_container).html(html);
+</script>
