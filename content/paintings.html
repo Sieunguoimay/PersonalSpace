@@ -9,18 +9,35 @@
     </div>
 </div>
 <script>
-    var imgUrls = [
-    "/content/images/Screenshot_20221029_104456.png",
-    "/content/images/blossom.png",
-    "/content/images/boy.jpg",
-    "/content/images/buffalo.jpg",
-    "/content/images/man_riding.png",
-    "/content/images/secondary_school_final.jpg",
-    "/content/images/random.png",
-    ];
+    var imgUrls = [{
+        url: "/content/images/Screenshot_20221029_104456.png",
+        date: "29/10/2022"
+    },{
+        url: "/content/images/bucket.png",
+        date: "30/9/2022"
+    }, {
+        url: "/content/images/man_riding.png",
+        date: "24/8/2022"
+    }, {
+        url: "/content/images/blossom.png",
+        date: "27/7/2022"
+    }, {
+        url: "/content/images/boy.jpg",
+        date: "2022"
+    }, {
+        url: "/content/images/buffalo.jpg",
+        date: "2022"
+    }, {
+        url: "/content/images/secondary_school_final.jpg",
+        date: "5/2021"
+    }, {
+        url: "/content/images/random.png",
+        date: "2021"
+    }, ];
     var html = "";
-    imgUrls.forEach(function (img) {
-        html += "<img width='100%' src='" + img + "' style='margin-bottom:50px' alt=''>"
+    imgUrls.forEach(function(img) {
+        html += "<img width='100%' src='" + img.url + "' alt=''>"
+        html += "<br><div style='margin-bottom:50px;text-align:right;font-style:italic'><small>" + img.date + "</small></div>"
     })
     $(img_container).html(html);
 </script>
